@@ -1,0 +1,21 @@
+{
+  "name": "tower-scope",
+  "repo": "tower/scope",
+  "description": "Tower Scope",
+  "version": "0.0.1",
+  "keywords": [],
+  "local": [],
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "component/emitter": "*",
+    "tower/client-view": "*"
+  },
+  "development": {
+    "component/assert": "*",
+    "visionmedia/mocha": "*"
+  }
+}
