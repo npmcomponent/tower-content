@@ -19,7 +19,7 @@ scope('menu')
     this.selected = this.items[index];
   });
 
-scope('menu').init({ items: [ 'a', 'b' ]}).select(1);
+scope('menu').init({ items: [ 'a', 'b' ] }).select(1);
 ```
 
 ## License
