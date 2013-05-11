@@ -20,24 +20,13 @@ describe('scope', function(){
     }).init();
   });
 
-  describe('attrs', function(){
+  describe('attr', function(){
     it('should define attrs', function(){
       scope('menu')
         .attr('items', 'array', [])
 
       var ctx = scope('menu').init();
       console.log(ctx.get('items'));
-    });
-
-    it('should define actions', function(done){
-      scope('menu')
-        .action('select', function(index){
-          assert('menu' === this.name);
-          assert(2 === index);
-          done();
-        });
-
-      scope('menu').init().select(2);
     });
 
     it('should allow passing attrs on `init`', function(){
@@ -48,6 +37,19 @@ describe('scope', function(){
       assert('1,2' === ctx.get('items').join(','));
     });
   });
+
+  describe('action', function(){
+    it('should define actions', function(done){
+      scope('menu')
+        .action('select', function(index){
+          assert('menu' === this.name);
+          assert(2 === index);
+          done();
+        });
+
+      scope('menu').init().select(2);
+    });
+  })
 
   /*it('should create a new child scope', function(){
     var child = scope('child');
