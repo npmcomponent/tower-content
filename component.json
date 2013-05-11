@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "tower/emitter": "*"
+    "tower/emitter": "*",
+    "tower/attr": "*"
   },
   "development": {
     "component/assert": "*",
