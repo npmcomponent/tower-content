@@ -1,13 +1,8 @@
-var assert = require('component-assert')
-  , scope = require('tower-scope')
-  , Scope = scope.Scope
-  , view = require('tower-view');
+var scope = 'undefined' === typeof window ? require('..') : require('tower-scope')
+  , assert = 'undefined' === typeof window ? require('assert') : require('component-assert');
 
 describe('scope', function(){
-
-  beforeEach(function(){
-    scope.clear();
-  });
+  beforeEach(scope.clear);
 
   it('should create a new scope', function(){
     var ctx = scope('hello');
@@ -33,7 +28,6 @@ describe('scope', function(){
   });
 
   it('should find the key in the current scope.', function(){
-
     var ctx = scope('ctx');
 
     ctx.data = {
@@ -46,7 +40,6 @@ describe('scope', function(){
   });
 
   it('should find the key in the parent scope.', function(){
-
     var parent = scope('parent')
       .child('ctx');
 
@@ -56,5 +49,4 @@ describe('scope', function(){
 
     assert(scope('ctx').find('user') === 'Hello');
   });
-
 });

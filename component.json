@@ -4,18 +4,18 @@
   "description": "Tower Scope",
   "version": "0.0.1",
   "keywords": [],
-  "local": [],
-  "main": "index.js",
-  "scripts": [
-    "index.js"
-  ],
-  "license": "MIT",
   "dependencies": {
-    "component/emitter": "*",
-    "tower/client-view": "*"
+    "tower/emitter": "*"
   },
   "development": {
     "component/assert": "*",
     "visionmedia/mocha": "*"
-  }
+  },
+  "main": "index.js",
+  "scripts": [
+    "index.js",
+    "lib/proto.js",
+    "lib/statics.js"
+  ],
+  "license": "MIT"
 }

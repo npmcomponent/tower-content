@@ -1,0 +1,11 @@
+{
+  "name": "tower-scope",
+  "description": "Tower Scope",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "tower-emitter": "*"
+  },
+  "main": "index.js",
+  "license": "MIT"
+}

@@ -1,16 +1,20 @@
+
 /**
- * Module Dependencies
+ * Module dependencies.
  */
 
+var Emitter = require('tower-emitter')
+  , proto = require('./lib/proto')
+  , statics = require('./lib/statics');
 
 /**
- * Module Export
+ * Expose `scope`.
  */
 
 exports = module.exports = scope;
 
 /**
- * Collection of Scopes
+ * Expose `collection`.
  */
 
 exports.collection = [];
@@ -19,18 +23,21 @@ exports.collection = [];
  * Public API
  */
 
-function scope(name, data, parent, viewName, el) {
+function scope(name, fn) {
+  if (exports.collection[name]) return exports.collection[name];
 
-  if (exports.collection[name])
-    return exports.collection[name];
+  /**
+   * Instantiate a new `Scope`.
+   */
 
-  if ('string' === typeof parent)
-    parent = scope(parent);
+  function Scope(data, el, parent) {
+    this.data = data;
+    this.el = el;
+    this.parent = parent;
+    this.children = [];
 
-  if (!el && viewName && 'string' !== viewName)
-    el = viewName.el;
-
-  var instance = new Scope(name, data, parent, view, el);
+    Scope.emit('init', this);
+  }
 
   exports.collection.push(instance);
   exports.collection[name] = instance;
@@ -38,12 +45,12 @@ function scope(name, data, parent, viewName, el) {
 }
 
 /**
- * Expose `Scope`
- * @type {Function}
+ * Mixin `Emitter`.
  */
 
-exports.Scope = Scope;
-
+Emitter(exports);
+Emitter(proto);
+Emitter(statics);
 
 /**
  * Clear the collections.
@@ -51,67 +58,8 @@ exports.Scope = Scope;
  * Used for testing.
  */
 
-exports.clear = function() {
+exports.clear = function(){
+  exports.off();
   exports.collection = [];
-}
-
-/**
- * Constructor
- */
-
-function Scope(name, data, parent, view, el) {
-  this.name = name;
-  this.el = el;
-  this.data = data;
-  this._parent = parent || null;
-  this.view = view;
-  this.children = [];
-}
-
-/**
- * Add a child
- */
-
-Scope.prototype.child = function(name, ctx) {
-  if (!name) return false;
-  if (!ctx) ctx = scope(name);
-  this.children.push(ctx);
-  this.children[name] = ctx;
-  ctx.parent(this);
   return this;
-};
-
-/**
- * Attach a parent to the current scope
- */
-
-Scope.prototype.parent = function(name, ctx) {
-
-  if ('string' !== typeof name && !ctx) {
-    ctx = name;
-    name = null;
-  }
-
-  this._parent = ctx;
-  return this;
-};
-
-/**
- * Find key within the scopes
- */
-
-Scope.prototype.find = function(key) {
-
-  if (this.data && this.data[key]) {
-    return this.data[key];
-  } else {
-    if (!_parent) {
-      // Look at the parent view's scope
-      this.view.parent.scope.find(key);
-    } else {
-      // Look at the parent scope
-      return this._parent.find(key);
-    }
-  }
-};
-
+}
