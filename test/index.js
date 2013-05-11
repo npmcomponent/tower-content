@@ -13,6 +13,13 @@ describe('scope', function(){
     scope('hello');
   });
 
+  it('should init', function(done){
+    scope('menu').on('init', function(instance){
+      assert('menu' === instance.name);
+      done();
+    }).init();
+  });
+
   it('should create a new child scope', function(){
     var child = scope('child');
     var ctx = scope('hello')

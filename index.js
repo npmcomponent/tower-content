@@ -44,6 +44,14 @@ function scope(name, fn) {
   Scope.prototype.constructor = Scope;
   Scope.id = name;
 
+  // statics
+
+  for (var key in statics) Scope[key] = statics[key];
+
+  // proto
+
+  for (var key in proto) Scope.prototype[key] = proto[key];
+
   exports.collection.push(Scope);
   exports.collection[name] = Scope;
   exports.emit('define', Scope);
