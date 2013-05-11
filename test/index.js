@@ -39,6 +39,14 @@ describe('scope', function(){
 
       scope('menu').init().select(2);
     });
+
+    it('should allow passing attrs on `init`', function(){
+      scope('menu')
+        .attr('items', 'array');
+
+      var ctx = scope('menu').init({ items: [1, 2] });
+      assert('1,2' === ctx.get('items').join(','));
+    });
   });
 
   /*it('should create a new child scope', function(){

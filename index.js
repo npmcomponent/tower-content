@@ -36,6 +36,9 @@ function scope(name, fn) {
     this.el = el;
     this.parent = parent;
     this.children = [];
+    if (data) {
+      for (var key in data) this.set(key, data[key]);
+    }
 
     Scope.emit('init', this);
   }
