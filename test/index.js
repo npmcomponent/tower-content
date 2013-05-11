@@ -20,7 +20,28 @@ describe('scope', function(){
     }).init();
   });
 
-  it('should create a new child scope', function(){
+  describe('attrs', function(){
+    it('should define attrs', function(){
+      scope('menu')
+        .attr('items', 'array', [])
+
+      var ctx = scope('menu').init();
+      console.log(ctx.get('items'));
+    });
+
+    it('should define actions', function(done){
+      scope('menu')
+        .action('select', function(index){
+          assert('menu' === this.name);
+          assert(2 === index);
+          done();
+        });
+
+      scope('menu').init().select(2);
+    });
+  });
+
+  /*it('should create a new child scope', function(){
     var child = scope('child');
     var ctx = scope('hello')
       .child('chx', child);
@@ -59,5 +80,5 @@ describe('scope', function(){
     };
 
     assert(scope('ctx').find('user') === 'Hello');
-  });
+  });*/
 });

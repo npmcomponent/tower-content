@@ -43,6 +43,7 @@ function scope(name, fn) {
   Scope.prototype = {};
   Scope.prototype.constructor = Scope;
   Scope.id = name;
+  Scope.attrs = [];
 
   // statics
 
