@@ -4,9 +4,13 @@ var scope = 'undefined' === typeof window ? require('..') : require('tower-scope
 describe('scope', function(){
   beforeEach(scope.clear);
 
-  it('should create a new scope', function(){
-    var ctx = scope('hello');
-    assert(ctx instanceof Scope);
+  it('should define', function(done){
+    scope.on('define', function(Scope){
+      assert('hello' === Scope.id);
+      done();
+    });
+
+    scope('hello');
   });
 
   it('should create a new child scope', function(){

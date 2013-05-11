@@ -31,6 +31,7 @@ function scope(name, fn) {
    */
 
   function Scope(data, el, parent) {
+    this.name = name;
     this.data = data;
     this.el = el;
     this.parent = parent;
@@ -39,9 +40,14 @@ function scope(name, fn) {
     Scope.emit('init', this);
   }
 
-  exports.collection.push(instance);
-  exports.collection[name] = instance;
-  return instance;
+  Scope.prototype = {};
+  Scope.prototype.constructor = Scope;
+  Scope.id = name;
+
+  exports.collection.push(Scope);
+  exports.collection[name] = Scope;
+  exports.emit('define', Scope);
+  return Scope;
 }
 
 /**
