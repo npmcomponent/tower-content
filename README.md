@@ -15,6 +15,7 @@ var scope = require('tower-scope');
 
 scope('menu')
   .attr('items', 'array')
+  .attr('selected', 'object')
   .action('select', function(index){
     this.selected = this.items[index];
   });
