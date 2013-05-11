@@ -49,7 +49,7 @@ describe('scope', function(){
 
       scope('menu').init().select(2);
     });
-  })
+  });
 
   /*it('should create a new child scope', function(){
     var child = scope('child');
