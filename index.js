@@ -33,8 +33,11 @@ function scope(name, fn) {
 
   function Scope(data, parent) {
     this.name = name;
-    this.parent = parent;
+    // XXX: refactor
+    this.parent = parent || ('root' === name ? undefined : exports.root());
     this.children = [];
+    if (this.parent && 'root' === this.parent.name)
+      this.parent.children.push(this);
     if (data) {
       for (var key in data) this.set(key, data[key]);
     }
@@ -78,6 +81,7 @@ Emitter(statics);
 
 exports.clear = function(){
   exports.off();
+  exports.root().remove();
   exports.collection = [];
   root = undefined;
   return this;
