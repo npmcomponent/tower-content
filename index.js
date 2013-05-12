@@ -5,7 +5,8 @@
 
 var Emitter = require('tower-emitter')
   , proto = require('./lib/proto')
-  , statics = require('./lib/statics');
+  , statics = require('./lib/statics')
+  , root;
 
 /**
  * Expose `scope`.
@@ -80,5 +81,15 @@ Emitter(statics);
 exports.clear = function(){
   exports.off();
   exports.collection = [];
+  root = undefined;
   return this;
+};
+
+/**
+ * Root scope.
+ */
+
+exports.root = function(){
+  if (root) return root;
+  return root = scope('root').init();
 }
