@@ -55,6 +55,8 @@ function scope(name, fn) {
 
   for (var key in proto) Scope.prototype[key] = proto[key];
 
+  if (fn) Scope.on('init', fn);
+
   exports.collection.push(Scope);
   exports.collection[name] = Scope;
   exports.emit('define', Scope);
