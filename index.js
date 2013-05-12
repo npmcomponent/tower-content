@@ -87,6 +87,10 @@ exports.clear = function(){
   return this;
 };
 
+exports.defined = function(name){
+  return exports.collection.hasOwnProperty(name);
+}
+
 /**
  * Root scope.
  */
