@@ -30,10 +30,9 @@ function scope(name, fn) {
    * Instantiate a new `Scope`.
    */
 
-  function Scope(data, el, parent) {
+  function Scope(data, parent) {
     this.name = name;
     this.data = data;
-    this.el = el;
     this.parent = parent;
     this.children = [];
     if (data) {
