@@ -1,6 +1,6 @@
 # Tower Scope
 
-Nothing yet.
+Data for the DOM.
 
 ## Installation
 
