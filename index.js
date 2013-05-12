@@ -33,13 +33,11 @@ function scope(name, fn) {
 
   function Scope(data, parent) {
     this.name = name;
-    this.data = data;
     this.parent = parent;
     this.children = [];
     if (data) {
       for (var key in data) this.set(key, data[key]);
     }
-
     Scope.emit('init', this);
   }
 

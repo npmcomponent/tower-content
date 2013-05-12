@@ -26,7 +26,7 @@ describe('scope', function(){
         .attr('items', 'array', [])
 
       var ctx = scope('menu').init();
-      console.log(ctx.get('items'));
+      //console.log(ctx.get('items'));
     });
 
     it('should allow passing attrs on `init`', function(){
