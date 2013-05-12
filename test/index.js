@@ -66,6 +66,14 @@ describe('scope', function(){
     assert('instance,constructor' === calls.join(','));
   });
 
+  it('should set default attributes on prototype', function(){
+    scope('menu')
+      .attr('title', 'string', 'Menu Title!');
+
+    assert('Menu Title!' === scope('menu').prototype.title);
+    assert('Menu Title!' === scope('menu').init().title);
+  });
+
   /*it('should create a new child scope', function(){
     var child = scope('child');
     var ctx = scope('hello')
