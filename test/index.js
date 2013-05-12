@@ -51,6 +51,21 @@ describe('scope', function(){
     });
   });
 
+  it('should emit `"remove"` on `remove()`', function(){
+    var calls = [];
+    
+    scope('menu')
+      .on('remove', function(instance){
+        calls.push('constructor');
+      });
+
+    scope('menu').init().on('remove', function(){
+      calls.push('instance');
+    }).remove();
+
+    assert('instance,constructor' === calls.join(','));
+  });
+
   /*it('should create a new child scope', function(){
     var child = scope('child');
     var ctx = scope('hello')
