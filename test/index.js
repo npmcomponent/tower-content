@@ -20,6 +20,10 @@ describe('scope', function(){
     }).init();
   });
 
+  it('should print reliable `toString()`', function(){
+    assert('[object Scope]' === scope('menu').init().toString());
+  });
+
   describe('attr', function(){
     it('should define attrs', function(){
       scope('menu')

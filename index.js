@@ -6,6 +6,7 @@
 var Emitter = require('tower-emitter')
   , proto = require('./lib/proto')
   , statics = require('./lib/statics')
+  , toString = Object.prototype.toString
   , root;
 
 /**
@@ -89,7 +90,15 @@ exports.clear = function(){
 
 exports.defined = function(name){
   return exports.collection.hasOwnProperty(name);
-}
+};
+
+/**
+ * Check if `obj` is a `Scope` object.
+ */
+
+exports.is = function(obj){
+  return '[object Scope]' === toString.call(obj);
+};
 
 /**
  * Root scope.
@@ -98,4 +107,4 @@ exports.defined = function(name){
 exports.root = function(){
   if (root) return root;
   return root = scope('root').init();
-}
+};
