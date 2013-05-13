@@ -74,6 +74,8 @@ describe('scope', function(){
     assert('Menu Title!' === scope('menu').init().title);
   });
 
+  it('should set `maxInstances` or something on `root` scope');
+
   /*it('should create a new child scope', function(){
     var child = scope('child');
     var ctx = scope('hello')
