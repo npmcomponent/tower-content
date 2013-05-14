@@ -60,6 +60,11 @@ describe('scope', function(){
       assert('bar' === child.get('foo'));
       assert('bar' === parent.get('foo'));
     });
+
+    it('should handle dot.separated.names', function(){
+      var random = scope('random').init({ x: { y: 10 } });
+      assert(10 === random.get('x.y'));
+    });
   });
 
   describe('action', function(){
