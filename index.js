@@ -32,16 +32,20 @@ function scope(name, fn) {
    * Instantiate a new `Scope`.
    */
 
-  function Scope(data, parent) {
+  function Scope(data) {
     this.name = name;
-    // XXX: refactor
-    this.parent = parent || ('root' === name ? undefined : exports.root());
-    this.children = [];
-    if (this.parent && 'root' === this.parent.name)
-      this.parent.children.push(this);
+    
     if (data) {
       for (var key in data) this.set(key, data[key]);
     }
+    
+    this.children = [];
+
+    if (!this.parent && 'root' !== name)
+      this.parent = exports.root();
+    if (this.parent)
+      this.parent.children.push(this);
+
     Scope.emit('init', this);
   }
 
