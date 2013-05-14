@@ -53,6 +53,13 @@ describe('scope', function(){
       assert('item a' === ctx.get('selected'));
       assert('item a' === ctx.attrs['selected']);
     });
+
+    it('should get parent value if own value is undefined', function(){
+      var parent = scope('parent').init({ foo: 'bar' });
+      var child = scope('child').init({ parent: parent });
+      assert('bar' === child.get('foo'));
+      assert('bar' === parent.get('foo'));
+    });
   });
 
   describe('action', function(){
@@ -65,6 +72,15 @@ describe('scope', function(){
         });
 
       scope('menu').init().select(2);
+    });
+
+    it('should call parent action if own is undefined', function(done){
+      var parent = scope('parent').action('hello', function(val){
+        assert('world' === val);
+        done();
+      }).init();
+      var child = scope('child').init({ parent: parent });
+      child.call('hello', 'world');
     });
   });
 
@@ -106,13 +122,6 @@ describe('scope', function(){
 
       menu.set('items', newItems);
     });
-  });
-
-  it('should get parent value if own value is undefined', function(){
-    var parent = scope('parent').init({ foo: 'bar' });
-    var child = scope('child').init({ parent: parent });
-    assert('bar' === child.get('foo'));
-    assert('bar' === parent.get('foo'));
   });
 
   it('should set `maxInstances` or something on `root` scope');
