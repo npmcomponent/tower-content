@@ -122,6 +122,34 @@ describe('scope', function(){
 
       menu.set('items', newItems);
     });
+
+    it('should emit `change <name>` on all instances from constructor', function(){
+      var calls = [];
+      var items = [ 'item a', 'item b', 'item c' ];
+
+      scope('menu')
+        .attr('items', function(){
+          return items;
+        });
+
+      var menu = scope('menu').init();
+      // add instance event handler
+      menu.on('change items', function(){
+        assert(items === menu.get('items'));
+        calls.push('change items');
+      });
+      // change items
+      items = [ 'item d', 'item e' ];
+      // emit `change items` from constructor.
+      // this makes it so you can tell all scopes of a
+      // particular type to emit events.
+      scope('menu').changed('items');
+      scope('menu').changed('items');
+      menu.remove();
+      // now it shouldn't register change events.
+      scope('menu').changed('items');
+      assert(2 === calls.length);
+    });
   });
 
   it('should set `maxInstances` or something on `root` scope');

@@ -5,7 +5,8 @@
   "keywords": [],
   "dependencies": {
     "tower-emitter": "*",
-    "tower-attr": "*"
+    "tower-attr": "*",
+    "indexof": "0.0.1"
   },
   "main": "index.js",
   "license": "MIT"

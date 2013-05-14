@@ -6,7 +6,8 @@
   "keywords": [],
   "dependencies": {
     "tower/emitter": "*",
-    "tower/attr": "*"
+    "tower/attr": "*",
+    "component/indexof": "*"
   },
   "development": {
     "component/assert": "*",

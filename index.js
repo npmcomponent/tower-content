@@ -52,6 +52,8 @@ function scope(name, fn) {
     if (this.parent)
       this.parent.children.push(this);
 
+    // for being able to emit events to instances from class.
+    Scope.instances.push(this);
     Scope.emit('init', this);
   }
 
@@ -60,6 +62,7 @@ function scope(name, fn) {
   Scope.id = name;
   Scope.attrs = [];
   Scope.actions = {};
+  Scope.instances = [];
 
   // statics
 
@@ -84,6 +87,14 @@ function scope(name, fn) {
 Emitter(exports);
 Emitter(proto);
 Emitter(statics);
+
+// XXX: maybe so you can do:
+// scope('body').emit('change x')
+// to notify all instances of body
+//statics._emit = statics.emit;
+//statics.emit = function(name){
+//  
+//}
 
 /**
  * Clear the collections.
