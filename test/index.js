@@ -27,10 +27,10 @@ describe('scope', function(){
   describe('attr', function(){
     it('should define attrs', function(){
       scope('menu')
-        .attr('items', 'array', [])
+        .attr('items', 'array', [1, 2, 3])
 
       var ctx = scope('menu').init();
-      //console.log(ctx.get('items'));
+      assert('1,2,3' === ctx.get('items').join(','));
     });
 
     it('should allow passing attrs on `init`', function(){
@@ -39,6 +39,17 @@ describe('scope', function(){
 
       var ctx = scope('menu').init({ items: [1, 2] });
       assert('1,2' === ctx.get('items').join(','));
+    });
+
+    it('should allow computed attributes', function(){
+      scope('menu')
+        .attr('items', 'array', [ 'item a', 'item b', 'item c' ])
+        .attr('selected', function(obj){
+          return obj.get('items')[0];
+        });
+
+      var ctx = scope('menu').init();
+      assert('item a' === ctx.get('selected'));
     });
   });
 

@@ -34,13 +34,16 @@ function scope(name, fn) {
 
   function Scope(data) {
     this.name = name;
-    
+    // all actual attributes/values
+    this.attrs = {};
+    this.children = [];
+
     if (data) {
       for (var key in data) this.set(key, data[key]);
     }
-    
-    this.children = [];
 
+    // XXX: probably should do `this.set('parent')`
+    //      so there is a standard way of managing parents.
     if (!this.parent && 'root' !== name)
       this.parent = exports.root();
     if (this.parent)
@@ -53,6 +56,7 @@ function scope(name, fn) {
   Scope.prototype.constructor = Scope;
   Scope.id = name;
   Scope.attrs = [];
+  Scope.actions = {};
 
   // statics
 
