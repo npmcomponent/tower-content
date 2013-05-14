@@ -105,7 +105,7 @@ exports.defined = function(name){
  */
 
 exports.is = function(obj){
-  return '[object Scope]' === toString.call(obj);
+  return obj && '[object Scope]' === obj.toString();
 };
 
 /**
