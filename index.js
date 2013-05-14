@@ -39,6 +39,9 @@ function scope(name, fn) {
     this.children = [];
 
     if (data) {
+      // special prop
+      this.parent = data.parent;
+      delete data.parent;
       for (var key in data) this.set(key, data[key]);
     }
 

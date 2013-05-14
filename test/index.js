@@ -108,6 +108,13 @@ describe('scope', function(){
     });
   });
 
+  it('should get parent value if own value is undefined', function(){
+    var parent = scope('parent').init({ foo: 'bar' });
+    var child = scope('child').init({ parent: parent });
+    assert('bar' === child.get('foo'));
+    assert('bar' === parent.get('foo'));
+  });
+
   it('should set `maxInstances` or something on `root` scope');
 
   /*it('should create a new child scope', function(){
