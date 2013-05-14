@@ -68,19 +68,44 @@ describe('scope', function(){
     });
   });
 
-  it('should emit `"remove"` on `remove()`', function(){
-    var calls = [];
-    
-    scope('menu')
-      .on('remove', function(instance){
-        calls.push('constructor');
+  describe('events', function(){
+    it('should emit `"remove"` on `remove()`', function(){
+      var calls = [];
+      
+      scope('menu')
+        .on('remove', function(instance){
+          calls.push('constructor');
+        });
+
+      scope('menu').init().on('remove', function(){
+        calls.push('instance');
+      }).remove();
+
+      assert('instance,constructor' === calls.join(','));
+    });
+
+    it('should emit `change` when property is set', function(done){
+      var defaultItems = [ 'item a', 'item b', 'item c' ];
+      var newItems = [ 'item d', 'item e' ];
+
+      scope('menu')
+        .attr('items', 'array', defaultItems)
+        .attr('selected', function(obj){
+          return obj.get('items')[0];
+        });
+
+      var menu = scope('menu').init();
+      
+      menu.on('change', function(name, val, prev){
+        assert('items' === name);
+        assert(newItems === val);
+        // since it's a default, it was never set
+        assert(undefined === prev);
+        done();
       });
 
-    scope('menu').init().on('remove', function(){
-      calls.push('instance');
-    }).remove();
-
-    assert('instance,constructor' === calls.join(','));
+      menu.set('items', newItems);
+    });
   });
 
   it('should set `maxInstances` or something on `root` scope');
