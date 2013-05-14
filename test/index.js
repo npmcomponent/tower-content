@@ -49,7 +49,9 @@ describe('scope', function(){
         });
 
       var ctx = scope('menu').init();
+      assert(undefined === ctx.attrs['selected']);
       assert('item a' === ctx.get('selected'));
+      assert('item a' === ctx.attrs['selected']);
     });
   });
 
