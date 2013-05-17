@@ -4,10 +4,10 @@
  */
 
 var Emitter = require('tower-emitter')
-  , proto = require('./lib/proto')
-  , statics = require('./lib/statics')
-  , toString = Object.prototype.toString
-  , root;
+var proto = require('./lib/proto')
+var statics = require('./lib/statics')
+var toString = Object.prototype.toString
+var root;
 
 /**
  * Expose `scope`.

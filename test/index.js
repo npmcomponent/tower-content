@@ -1,5 +1,10 @@
-var scope = 'undefined' === typeof window ? require('..') : require('tower-scope')
-  , assert = 'undefined' === typeof window ? require('assert') : require('component-assert');
+if ('undefined' === typeof window) {
+  var scope = require('..');
+  var assert = require('assert');
+} else {
+  var scope = require('tower-scope');
+  var assert = require('component-assert');
+}
 
 describe('scope', function(){
   beforeEach(scope.clear);
