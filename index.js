@@ -3,10 +3,9 @@
  * Module dependencies.
  */
 
-var Emitter = require('tower-emitter')
-var proto = require('./lib/proto')
-var statics = require('./lib/statics')
-var toString = Object.prototype.toString
+var Emitter = require('tower-emitter');
+var proto = require('./lib/proto');
+var statics = require('./lib/statics');
 var root;
 
 /**
