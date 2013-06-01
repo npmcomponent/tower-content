@@ -23,6 +23,10 @@ content('menu')
 content('menu').init({ items: [ 'a', 'b' ] }).select(1);
 ```
 
+## Notes
+
+- http://en.wikipedia.org/wiki/Content_(media)
+
 ## License
 
 MIT
