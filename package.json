@@ -1,6 +1,6 @@
 {
-  "name": "tower-scope",
-  "description": "Tower Scope",
+  "name": "tower-content",
+  "description": "Tower Content",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {

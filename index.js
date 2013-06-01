@@ -9,10 +9,10 @@ var statics = require('./lib/statics');
 var root;
 
 /**
- * Expose `scope`.
+ * Expose `content`.
  */
 
-exports = module.exports = scope;
+exports = module.exports = content;
 
 /**
  * Expose `collection`.
@@ -24,14 +24,14 @@ exports.collection = [];
  * Public API
  */
 
-function scope(name, fn) {
+function content(name, fn) {
   if (exports.collection[name]) return exports.collection[name];
 
   /**
-   * Instantiate a new `Scope`.
+   * Instantiate a new `Content`.
    */
 
-  function Scope(data) {
+  function Content(data) {
     this.name = name;
     // all actual attributes/values
     this.attrs = {};
@@ -52,31 +52,31 @@ function scope(name, fn) {
       this.parent.children.push(this);
 
     // for being able to emit events to instances from class.
-    Scope.instances.push(this);
-    Scope.emit('init', this);
+    Content.instances.push(this);
+    Content.emit('init', this);
   }
 
-  Scope.prototype = {};
-  Scope.prototype.constructor = Scope;
-  Scope.id = name;
-  Scope.attrs = [];
-  Scope.actions = {};
-  Scope.instances = [];
+  Content.prototype = {};
+  Content.prototype.constructor = Content;
+  Content.id = name;
+  Content.attrs = [];
+  Content.actions = {};
+  Content.instances = [];
 
   // statics
 
-  for (var key in statics) Scope[key] = statics[key];
+  for (var key in statics) Content[key] = statics[key];
 
   // proto
 
-  for (var key in proto) Scope.prototype[key] = proto[key];
+  for (var key in proto) Content.prototype[key] = proto[key];
 
-  if (fn) Scope.on('init', fn);
+  if (fn) Content.on('init', fn);
 
-  exports.collection.push(Scope);
-  exports.collection[name] = Scope;
-  exports.emit('define', Scope);
-  return Scope;
+  exports.collection.push(Content);
+  exports.collection[name] = Content;
+  exports.emit('define', Content);
+  return Content;
 }
 
 /**
@@ -88,7 +88,7 @@ Emitter(proto);
 Emitter(statics);
 
 // XXX: maybe so you can do:
-// scope('body').emit('change x')
+// content('body').emit('change x')
 // to notify all instances of body
 //statics._emit = statics.emit;
 //statics.emit = function(name){
@@ -114,18 +114,18 @@ exports.defined = function(name){
 };
 
 /**
- * Check if `obj` is a `Scope` object.
+ * Check if `obj` is a `Content` object.
  */
 
 exports.is = function(obj){
-  return obj && '[object Scope]' === obj.toString();
+  return obj && '[object Content]' === obj.toString();
 };
 
 /**
- * Root scope.
+ * Root content.
  */
 
 exports.root = function(){
   if (root) return root;
-  return root = scope('root').init();
+  return root = content('root').init();
 };

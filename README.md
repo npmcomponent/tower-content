@@ -1,26 +1,26 @@
-# Tower Scope
+# Tower Content
 
 Data for the DOM.
 
 ## Installation
 
 ```bash
-$ component install tower/scope
+$ component install tower/content
 ```
 
 ## Examples
 
 ```js
-var scope = require('tower-scope');
+var content = require('tower-content');
 
-scope('menu')
+content('menu')
   .attr('items', 'array')
   .attr('selected', 'object')
   .action('select', function(index){
     this.selected = this.items[index];
   });
 
-scope('menu').init({ items: [ 'a', 'b' ] }).select(1);
+content('menu').init({ items: [ 'a', 'b' ] }).select(1);
 ```
 
 ## License
