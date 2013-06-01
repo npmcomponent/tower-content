@@ -1,3 +1,4 @@
+
 if ('undefined' === typeof window) {
   var scope = require('..');
   var assert = require('assert');
@@ -32,7 +33,7 @@ describe('scope', function(){
   describe('attr', function(){
     it('should define attrs', function(){
       scope('menu')
-        .attr('items', 'array', [1, 2, 3])
+        .attr('items', 'array', [ 1, 2, 3 ])
 
       var ctx = scope('menu').init();
       assert('1,2,3' === ctx.get('items').join(','));
@@ -42,7 +43,7 @@ describe('scope', function(){
       scope('menu')
         .attr('items', 'array');
 
-      var ctx = scope('menu').init({ items: [1, 2] });
+      var ctx = scope('menu').init({ items: [ 1, 2 ] });
       assert('1,2' === ctx.get('items').join(','));
     });
 
