@@ -2,7 +2,7 @@
   "name": "tower-content",
   "repo": "tower/content",
   "description": "Tower Content",
-  "version": "0.5.0pre",
+  "version": "0.1.0pre",
   "keywords": [],
   "dependencies": {
     "tower/emitter": "*",
