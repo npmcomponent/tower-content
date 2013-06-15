@@ -1,3 +1,8 @@
+/**
+ * Module that handles the data for the DOM.
+ *
+ * @module content
+ */
 
 /**
  * Module dependencies.
@@ -21,14 +26,22 @@ exports = module.exports = content;
 exports.collection = [];
 
 /**
- * Public API
+ * Public API. Gets an existing content or creates a new one.
+ *
+ * @param {String} name The content's name.
+ * @param {Function} fn Function called on content initialization.
+ * @return {Content} A `Content` object.
  */
 
 function content(name, fn) {
   if (exports.collection[name]) return exports.collection[name];
 
   /**
-   * Instantiate a new `Content`.
+   * Class representing a specific data segment in the DOM.
+   *
+   * @class
+   *
+   * @param {Object} data The content's data.
    */
 
   function Content(data) {
@@ -97,8 +110,11 @@ Emitter(statics);
 
 /**
  * Clear the collections.
- *
  * Used for testing.
+ *
+ * @chainable
+ *
+ * @return {this} self.
  */
 
 exports.clear = function(){
@@ -109,12 +125,22 @@ exports.clear = function(){
   return this;
 };
 
+/**
+ * Check if a content has been defined.
+ *
+ * @param {String} name The content's name.
+ * @return {Boolean} true if the `Content` has been defined, but false otherwise.
+ */
+
 exports.defined = function(name){
   return exports.collection.hasOwnProperty(name);
 };
 
 /**
- * Check if `obj` is a `Content` object.
+ * Check if `obj` is a `Content` object
+ *
+ * @param {Content} obj A content object.
+ * @return {Boolean} true if `obj` is a Content object, but false otherwise.
  */
 
 exports.is = function(obj){
@@ -122,7 +148,9 @@ exports.is = function(obj){
 };
 
 /**
- * Root content.
+ * Get the initiated root content.
+ *
+ * @return {Content} The root content.
  */
 
 exports.root = function(){
