@@ -41,7 +41,7 @@ function content(name, fn) {
       // special prop
       this.parent = data.parent;
       delete data.parent;
-      for (var key in data) this.set(key, data[key]);
+      this.update(data);
     }
 
     // XXX: probably should do `this.set('parent')`
