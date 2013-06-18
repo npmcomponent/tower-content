@@ -74,6 +74,7 @@ function content(name, fn) {
   Content.id = name;
   Content.attrs = [];
   Content.actions = {};
+  Content.helpers = {};
   Content.instances = [];
 
   // statics
