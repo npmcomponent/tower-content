@@ -61,6 +61,10 @@ function content(name, fn) {
     if (this.parent)
       this.parent.children.push(this);
 
+    this.root = 'root' === name
+      ? this
+      : exports.root();
+
     // for being able to emit events to instances from class.
     Content.instances.push(this);
     Content.emit('init', this);
