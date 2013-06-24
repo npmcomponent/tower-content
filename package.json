@@ -1,11 +1,11 @@
 {
   "name": "tower-content",
   "description": "Tower Content",
-  "version": "0.1.0pre2",
+  "version": "0.1.0",
   "keywords": [],
   "dependencies": {
-    "tower-emitter": "~0.1.0pre",
-    "tower-attr": "~0.1.0pre",
+    "tower-emitter": "~0.1.0",
+    "tower-attr": "~0.1.0",
     "indexof": "0.0.1"
   },
   "main": "index.js",
