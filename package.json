@@ -1,7 +1,7 @@
 {
   "name": "tower-content",
   "description": "Tower Content",
-  "version": "0.1.0",
+  "version": "0.1.02",
   "keywords": [],
   "dependencies": {
     "tower-emitter": "~0.1.0",

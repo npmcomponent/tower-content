@@ -41,30 +41,14 @@ function content(name, fn) {
    * @api public
    */
 
-  function Content(data) {
+  function Content(data, parent) {
     this.name = name;
     // all actual attributes/values
-    this.attrs = {};
+    this.data = {};
     this.children = [];
-
-    if (data) {
-      // special prop
-      this.parent = data.parent;
-      delete data.parent;
-      this.update(data);
-    }
-
-    // XXX: probably should do `this.set('parent')`
-    //      so there is a standard way of managing parents.
-    if (!this.parent && 'root' !== name)
-      this.parent = exports.root();
-    if (this.parent)
-      this.parent.children.push(this);
-
-    this.root = 'root' === name
-      ? this
-      : exports.root();
-
+    this.root = 'root' === name ? this : exports.root();
+    this.setParent(parent);
+    if (data) this.update(data);
     // for being able to emit events to instances from class.
     Content.instances.push(this);
     Content.emit('init', this);

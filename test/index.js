@@ -55,14 +55,14 @@ describe('content', function(){
         });
 
       var ctx = content('menu').init();
-      assert(undefined === ctx.attrs['selected']);
+      assert(undefined === ctx.data['selected']);
       assert('item a' === ctx.get('selected'));
-      assert('item a' === ctx.attrs['selected']);
+      assert('item a' === ctx.data['selected']);
     });
 
     it('should get parent value if own value is undefined', function(){
       var parent = content('parent').init({ foo: 'bar' });
-      var child = content('child').init({ parent: parent });
+      var child = content('child').init({ }, parent);
       assert('bar' === child.get('foo'));
       assert('bar' === parent.get('foo'));
     });
@@ -90,7 +90,7 @@ describe('content', function(){
         assert('world' === val);
         done();
       }).init();
-      var child = content('child').init({ parent: parent });
+      var child = content('child').init({ }, parent);
       child.call('hello', 'world');
     });
   });
