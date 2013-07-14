@@ -37,6 +37,8 @@ describe('content', function(){
 
       var ctx = content('menu').init();
       assert('1,2,3' === ctx.get('items').join(','));
+      assert('items' === content('menu').attrs['items'].name);
+      assert('menu.items' === content('menu').attrs['items'].path);
     });
 
     it('should allow passing attrs on `init`', function(){
