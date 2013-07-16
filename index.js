@@ -78,6 +78,20 @@ function content(name, fn) {
   return Content;
 }
 
+// XXX: not sure where this should go yet.
+proto.serialize = function(){
+  var json = {};
+  var data = this.data;
+  for (var key in data) {
+    if (content.is(data[key])) {
+      json[key] = data[key].serialize();
+    } else if (this.constructor.attrs[key]) {
+      json[key] = data[key];
+    }
+  }
+  return json;
+};
+
 /**
  * Mixin `Emitter`.
  */
