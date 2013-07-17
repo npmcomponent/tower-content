@@ -4,9 +4,9 @@
   "version": "0.1.02",
   "keywords": [],
   "dependencies": {
-    "tower-emitter": "~0.1.0",
-    "tower-attr": "~0.1.0",
-    "indexof": "0.0.1"
+    "tower-emitter": "*",
+    "tower-attr": "*",
+    "indexof": "*"
   },
   "main": "index.js",
   "repository": {
