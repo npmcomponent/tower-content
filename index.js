@@ -136,7 +136,7 @@ exports.clear = function(){
  * @api public
  */
 
-exports.defined = function(name){
+exports.has = function(name){
   return exports.collection.hasOwnProperty(name);
 };
 
