@@ -6,6 +6,7 @@
   "dependencies": {
     "tower-emitter": "~0.1.2",
     "tower-attr": "~0.1.2",
+    "tower-accessor": "*",
     "indexof": "*"
   },
   "main": "index.js",

@@ -45,6 +45,7 @@ function content(name, fn) {
     this.name = name;
     // all actual attributes/values
     this.data = {};
+    this.edges = {};
     this.children = [];
     this.root = 'root' === name ? this : exports.root();
     this.setParent(parent);
