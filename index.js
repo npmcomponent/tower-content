@@ -4,6 +4,7 @@
  */
 
 var Emitter = require('tower-emitter');
+var accessor = require('tower-accessor');
 var proto = require('./lib/proto');
 var statics = require('./lib/statics');
 var root;
@@ -50,6 +51,7 @@ function content(name, fn) {
     this.root = 'root' === name ? this : exports.root();
     this.setParent(parent);
     if (data) this.update(data);
+    this.accessor = accessor(this, 'data');
     // for being able to emit events to instances from class.
     Content.instances.push(this);
     Content.emit('init', this);

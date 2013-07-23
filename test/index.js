@@ -165,5 +165,19 @@ describe('content', function(){
     });
   });
 
+  it('should define accessors', function(done){
+    var scope = content('x').init({ post: { title: 'foo', body: 'bar' } });
+
+    assert(scope.accessor);
+    assert('foo' === scope.attr('post.title').get());
+    assert('bar' === scope.attr('post.body').get());
+
+    scope.attr('post.title').on('change', function(){
+      done();
+    });
+
+    scope.attr('post.title').set('random');
+  });
+
   it('should set `maxInstances` or something on `root` content');
 });
