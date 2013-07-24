@@ -50,6 +50,7 @@ function content(name, fn) {
     this.children = [];
     this.root = 'root' === name ? this : exports.root();
     this.setParent(parent);
+    data = Content._defaultAttrs(data, this);
     if (data) this.update(data);
     this.accessor = accessor(this, 'data');
     // for being able to emit events to instances from class.
@@ -61,9 +62,11 @@ function content(name, fn) {
   Content.prototype.constructor = Content;
   Content.id = name;
   Content.attrs = [];
+  Content.attrs.__default__ = {};
   Content.actions = {};
   Content.helpers = {};
   Content.instances = [];
+  Content.accessor = accessor(Content);
 
   // statics
 
