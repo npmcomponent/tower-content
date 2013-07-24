@@ -64,7 +64,6 @@ function content(name, fn) {
   Content.attrs = [];
   Content.attrs.__default__ = {};
   Content.actions = {};
-  Content.helpers = {};
   Content.instances = [];
   Content.accessor = accessor(Content);
 
@@ -105,14 +104,6 @@ proto.serialize = function(){
 Emitter(exports);
 Emitter(proto);
 Emitter(statics);
-
-// XXX: maybe so you can do:
-// content('body').emit('change x')
-// to notify all instances of body
-//statics._emit = statics.emit;
-//statics.emit = function(name){
-//  
-//}
 
 /**
  * Clear the collections.
