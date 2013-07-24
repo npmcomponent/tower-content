@@ -50,9 +50,9 @@ function content(name, fn) {
     this.children = [];
     this.root = 'root' === name ? this : exports.root();
     this.setParent(parent);
+    this.accessor = accessor(this, 'data');
     data = Content._defaultAttrs(data, this);
     if (data) this.update(data);
-    this.accessor = accessor(this, 'data');
     // for being able to emit events to instances from class.
     Content.instances.push(this);
     Content.emit('init', this);
