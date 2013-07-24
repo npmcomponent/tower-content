@@ -113,56 +113,6 @@ describe('content', function(){
 
       assert('instance,constructor' === calls.join(','));
     });
-
-    it('should emit `change` when property is set', function(done){
-      var defaultItems = [ 'item a', 'item b', 'item c' ];
-      var newItems = [ 'item d', 'item e' ];
-
-      content('menu')
-        .attr('items', 'array', defaultItems);
-
-      var menu = content('menu').init();
-      
-      menu.on('change', function(name, val, prev){
-        assert('items' === name);
-        assert(newItems.join(',') === val.join(','));
-        // since it's a default, it was never set
-        assert(defaultItems.join(',') === prev.join(','));
-        done();
-      });
-
-      menu.set('items', newItems);
-    });
-
-    // XXX: not sure we need this anymore.
-    /*it('should emit `change <name>` on all instances from constructor', function(){
-      var calls = [];
-      var items = [ 'item a', 'item b', 'item c' ];
-
-      content('menu')
-        .attr('items', function(){
-          return items;
-        });
-
-      var menu = content('menu').init();
-      // add instance event handler
-      menu.on('change items', function(){
-        assert(items === menu.get('items'));
-        calls.push('change items');
-      });
-
-      // change items
-      items = [ 'item d', 'item e' ];
-      // emit `change items` from constructor.
-      // this makes it so you can tell all contents of a
-      // particular type to emit events.
-      content('menu').changed('items');
-      content('menu').changed('items');
-      menu.remove();
-      // now it shouldn't register change events.
-      content('menu').changed('items');
-      assert(2 === calls.length);
-    });*/
   });
 
   it('should define accessors', function(done){
