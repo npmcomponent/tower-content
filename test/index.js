@@ -85,7 +85,7 @@ describe('content', function(){
           done();
         });
 
-      content('menu').init().select(2);
+      content('menu').init().call('select', 2);
     });
 
     it('should call parent action if own is undefined', function(done){

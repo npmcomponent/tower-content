@@ -63,7 +63,7 @@ function content(name, fn) {
   Content.id = name;
   Content.attrs = [];
   Content.attrs.__default__ = {};
-  Content.actions = {};
+  Content.methods = {};
   Content.instances = [];
   Content.accessor = accessor(Content);
 

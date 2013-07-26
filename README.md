@@ -2,6 +2,8 @@
 
 Data for the DOM.
 
+The scope-accessor graph.
+
 ## Installation
 
 ```bash
