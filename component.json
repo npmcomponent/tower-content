@@ -2,11 +2,11 @@
   "name": "tower-content",
   "repo": "tower/content",
   "description": "Tower Content",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "keywords": [],
   "dependencies": {
-    "tower/emitter": "0.1.2",
-    "tower/attr": "0.1.2",
+    "tower/emitter": "*",
+    "tower/attr": "*",
     "tower/accessor": "*",
     "component/indexof": "*"
   },
