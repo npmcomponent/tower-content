@@ -107,8 +107,8 @@ statics.scope = function(name){
   scope._parent = this;
   scope.scopeName = name;
   
-  this.attr(name, 'object', function(parent){
-    var obj = scope.init({}, parent);
+  this.attr(name, 'object', function(parent, val){
+    var obj = scope.init(val, parent);
     return obj.data;
   });
 
