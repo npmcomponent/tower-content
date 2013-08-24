@@ -98,6 +98,24 @@ proto.serialize = function(){
 };
 
 /**
+ * Define a nested scope.
+ */
+
+statics.scope = function(name){
+  // XXX: simplify to not use attributes.
+  var scope = content(this.id + '.' + name);
+  scope._parent = this;
+  scope.scopeName = name;
+  
+  this.attr(name, 'object', function(parent){
+    var obj = scope.init({}, parent);
+    return obj.data;
+  });
+
+  return scope;
+};
+
+/**
  * Mixin `Emitter`.
  */
 

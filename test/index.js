@@ -130,4 +130,25 @@ describe('content', function(){
   });
 
   it('should set `maxInstances` or something on `root` content');
+
+  it('should define nested scopes', function(){
+    content('one')
+      .attr('one-a', 'string', 'a')
+      .scope('two')
+        .attr('two-a')
+        .attr('two-b')
+        .scope('three')
+          .attr('three-a')
+          .parent().parent()
+      .scope('four');
+
+    var obj = content('one').init();
+    obj.set('two.two-a', 'asdf');
+
+    var data = obj.data;
+    var expected = { 'one-a': 'a', two: { three: {}, 'two-a': 'asdf' }, four: {} };
+    assert.deepEqual(data, expected);
+
+    assert(obj.scope('two'));
+  });
 });
