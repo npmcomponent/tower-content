@@ -102,8 +102,12 @@ proto.serialize = function(){
  */
 
 statics.scope = function(name){
-  // XXX: simplify to not use attributes.
-  var scope = content(this.id + '.' + name);
+  // only define once.
+  var childName = this.id + '.' + name;
+  if (content.defined(childName))
+    return content(childName);
+
+  var scope = content(childName);
   scope._parent = this;
   scope.scopeName = name;
   
@@ -148,7 +152,7 @@ exports.clear = function(){
  * @api public
  */
 
-exports.has = function(name){
+exports.defined = function(name){
   return exports.collection.hasOwnProperty(name);
 };
 
