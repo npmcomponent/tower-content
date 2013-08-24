@@ -113,6 +113,8 @@ statics.scope = function(name){
   
   this.attr(name, 'object', function(parent, val){
     var obj = scope.init(val, parent);
+    // XXX: tmp hack!
+    obj.data.name = name;
     return obj.data;
   });
 
