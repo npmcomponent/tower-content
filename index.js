@@ -75,6 +75,19 @@ function content(name, fn) {
 
   for (var key in proto) Content.prototype[key] = proto[key];
 
+  /**
+   * Standard `toString`.
+   *
+   * @constructor Content
+   * @see http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/
+   * @return {String} A specifically formatted String.
+   * @api public
+   */
+
+  Content.prototype.toString = function(){
+    return '[object Content]';
+  };
+
   if (fn) Content.on('init', fn);
 
   exports.collection.push(Content);
