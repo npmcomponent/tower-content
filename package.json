@@ -1,18 +1,14 @@
 {
   "name": "tower-content",
   "description": "Tower Content",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "keywords": [],
-  "dependencies": {
-    "tower-emitter": "*",
-    "tower-attr": "*",
-    "tower-accessor": "*",
-    "indexof": "*"
-  },
   "main": "index.js",
-  "repository": {
-    "type" : "git",
-    "url" : "http://github.com/tower/content.git"
+  "dependencies": {
+    "tower-emitter": "git://github.com/npmcomponent/tower-emitter.git",
+    "tower-attr": "git://github.com/npmcomponent/tower-attr.git",
+    "tower-accessor": "git://github.com/npmcomponent/tower-accessor.git",
+    "component-indexof": "git://github.com/npmcomponent/component-indexof.git"
   },
   "license": "MIT"
 }

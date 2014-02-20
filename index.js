@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-var Emitter = require('tower-emitter');
-var accessor = require('tower-accessor');
+// commented out by npm-component: var Emitter = require('tower-emitter');
+// commented out by npm-component: var accessor = require('tower-accessor');
 var proto = require('./lib/proto');
 var statics = require('./lib/statics');
 var root;
